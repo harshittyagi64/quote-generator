@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motivational Quote Generator</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .quote-box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .quote-box p {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #6c63ff;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #574b90;
+    }
+
+    #music-btn {
+      background-color: #ff5e57;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 600px) {
+      .quote-box {
+        padding: 20px;
+      }
+
+      .quote-box p {
+        font-size: 1.1rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .credit {
+      font-size: 12px;
+      margin-top: 15px;
+      color: #555;
+      text-align: center;
+    }
+
+    .credit a {
+      color: #333;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quote-box">
+    <p id="quote">"Believe in yourself and all that you are."</p>
+    <button onclick="generateQuote()">Next Quote</button>
+    <button onclick="toggleMusic()" id="music-btn">Pause Music</button>
+  </div>
+
+  <!-- Background music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-curious.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Music credit -->
+  <p class="credit">
+    Music: <a href="https://www.bensound.com/royalty-free-music/track/curious-child-hopeful-shiny" target="_blank">"Curious Child" by Bensound.com</a>
+  </p>
+
+  <script>
+    const quotes = [
+      "Push yourself, because no one else is going to do it for you.",
+      "Success doesn't just find you. You have to go out and get it.",
+      "Great things never come from comfort zones.",
+      "Dream it. Wish it. Do it.",
+      "Don’t stop when you’re tired. Stop when you’re done.",
+      "Work hard in silence. Let success make the noise.",
+      "Believe in yourself and all that you are.",
+      "Stay focused and never give up."
+    ];
+
+    function generateQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").innerText = `"${quotes[randomIndex]}"`;
+    }
+
+    let musicPlaying = true;
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-btn");
+
+    function toggleMusic() {
+      if (musicPlaying) {
+        music.pause();
+        musicBtn.innerText = "Play Music";
+      } else {
+        music.play();
+        musicBtn.innerText = "Pause Music";
+      }
+      musicPlaying = !musicPlaying;
+    }
+  </script>
+
+</body>
+</html>
