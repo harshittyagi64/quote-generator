@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Quote Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #333;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      max-width: 500px;
+      text-align: center;
+    }
+    .quote {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .author {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: #4facfe;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00f2fe;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="quote" id="quote">"Loading..."</div>
+    <div class="author" id="author">- ...</div>
+    <button onclick="newQuote()">✨ Show Another Quote</button>
+  </div>
+
+  <script>
+    const quotes = [
+      { quote: "Believe in yourself.", author: "Unknown" },
+      { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
+      { quote: "Your time is limited, so don’t waste it living someone else’s life.", author: "Steve Jobs" },
+      { quote: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+      { quote: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
+    ];
+
+    function newQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const quote = quotes[randomIndex];
+      document.getElementById("quote").textContent = `"${quote.quote}"`;
+      document.getElementById("author").textContent = `- ${quote.author}`;
+    }
+
+    window.onload = newQuote;
+  </script>
+</body>
+</html>
