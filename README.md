@@ -15,7 +15,9 @@ This is a simple web app that generates random motivational quotes using HTML, C
 - JavaScript
 
 ## 📸 Screenshot
-*(Add your image here later)*
+## 📸 Screenshot
+
+quote-generator-ui.png
 
 ## 📂 How to Run Locally
 1. Clone the repo:
