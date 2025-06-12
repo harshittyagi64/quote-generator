@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Quote Generator</title>
+  <style>
+    :root {
+      --light-bg: linear-gradient(to right, #74ebd5, #acb6e5);
+      --dark-bg: linear-gradient(to right, #232526, #414345);
+      --light-text: #333;
+      --dark-text: #eee;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--light-bg);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: var(--light-text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .quote-box {
+      text-align: center;
+      padding: 20px;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .quote {
+      font-size: 1.5em;
+      font-style: italic;
+      margin: 20px 0;
+    }
+
+    .author {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .toggle {
+      margin-top: 20px;
+      cursor: pointer;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #555;
+      color: #fff;
+      font-size: 1em;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div class="quote-box">
+    <div class="quote" id="quote">Loading...</div>
+    <div class="author" id="author"></div>
+    <button class="toggle" onclick="toggleTheme()">Toggle Theme</button>
+  </div>
+  <div class="footer">Made with ❤️ by Harshit Tyagi</div>
+
+  <script>
+    const quotes = [
+      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+      { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+      { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+      { text: "Your time is limited, so don’t waste it living someone else’s life.", author: "Steve Jobs" },
+      { text: "Dream big and dare to fail.", author: "Norman Vaughan" },
+      { text: "Don’t watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+      { text: "Act as if what you do makes a difference. It does.", author: "William James" },
+      { text: "Everything you can imagine is real.", author: "Pablo Picasso" },
+      { text: "What you get by achieving your goals is not as important as what you become by achieving your goals.", author: "Zig Ziglar" }
+    ];
+
+    const quoteEl = document.getElementById('quote');
+    const authorEl = document.getElementById('author');
+
+    function loadQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const quote = quotes[randomIndex];
+      quoteEl.textContent = `"${quote.text}"`;
+      authorEl.textContent = `- ${quote.author}`;
+    }
+
+    function toggleTheme() {
+      const root = document.documentElement;
+      if (document.body.style.background.includes('74ebd5')) {
+        document.body.style.background = getComputedStyle(root).getPropertyValue('--dark-bg');
+        document.body.style.color = getComputedStyle(root).getPropertyValue('--dark-text');
+      } else {
+        document.body.style.background = getComputedStyle(root).getPropertyValue('--light-bg');
+        document.body.style.color = getComputedStyle(root).getPropertyValue('--light-text');
+      }
+    }
+
+    loadQuote();
+  </script>
+</body>
+</html>
