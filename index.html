@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Quote Generator</title>
+  <style>
+    :root {
+      --light-bg: linear-gradient(to right, #74ebd5, #acb6e5);
+      --dark-bg: linear-gradient(to right, #232526, #414345);
+      --light-text: #333;
+      --dark-text: #eee;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--light-bg);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: var(--light-text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .quote-box {
+      text-align: center;
+      padding: 20px;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .quote {
+      font-size: 1.5em;
+      font-style: italic;
+      margin: 20px 0;
+    }
+
+    .author {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .btn {
+      margin: 0 10px;
+      cursor: pointer;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #555;
+      color: #fff;
+      font-size: 1em;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="quote-box">
+    <div class="quote" id="quote">Loading...</div>
+    <div class="author" id="author"></div>
+    <div class="button-container">
+      <button class="btn" onclick="loadQuote()">Next Quote</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    Made with ❤️ by Harshit Tyagi
+  </div>
+
+  <script>
+    const quotes = [
+      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+      { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+      { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+      { text: "Your time is limited, so don’t waste it living someone else’s life.", author: "Steve Jobs" },
+      { text: "Dream big and dare to fail.", author: "Norman Vaughan" },
+      { text: "Don’t watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+      { text: "Push yourself, because no one else is going to do it for you.", author: "Unknown" },
+      { text: "Sometimes later becomes never. Do it now.", author: "Unknown" },
+      { text: "Great things never come from comfort zones.", author: "Unknown" },
+      { text: "Success doesn’t just find you. You have to go out and get it.", author: "Unknown" }
+    ];
+
+    const quoteEl = document.getElementById('quote');
+    const authorEl = document.getElementById('author');
+
+    function loadQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const quote = quotes[randomIndex];
+      quoteEl.textContent = `"${quote.text}"`;
+      authorEl.textContent = `- ${quote.author}`;
+    }
+
+    loadQuote();
+  </script>
+</body>
+</html>
